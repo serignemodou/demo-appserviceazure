@@ -2,9 +2,5 @@
 	"connectionString": "InstrumentationKey=4b1059f8-03a4-4afc-8a36-3917951751fa;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=e8e8c951-5395-46fc-ac16-d45314b450e4",
 	"role": {
 		"name": "cloud role demo name"
-	},
-	"customDimensions": {
-		"firstName": "modou",
-		"lastName": "diouf"
 	}
 }
