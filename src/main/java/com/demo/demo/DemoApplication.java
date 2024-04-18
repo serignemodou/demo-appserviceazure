@@ -25,15 +25,16 @@ public class DemoApplication {
 	private static final TelemetryClient telemetryClient = new TelemetryClient();
 	Map<String, String> mp = new HashMap<>();
 	
-	public Map<String, String> headersMap = new HashMap<>();
+	@RequestMapping("/header") 
 	public Map<String, String> getRequestHeaders(HttpServletRequest request) {
 		Enumeration<String> headerNames = request.getHeaderNames();
-		
+		Map<String, String> headersMap = new HashMap<>();
 		while (headerNames.hasMoreElements()) {
 			String headerName = headerNames.nextElement();
             String headerValue = request.getHeader(headerName);
             headersMap.put(headerName, headerValue);
         }
+		telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
 		return headersMap;
 	}
 
@@ -41,8 +42,7 @@ public class DemoApplication {
 	public String home() { 
 		mp.put("Squad", "swap");
 		mp.put("Poste", "OPS");
-		//telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
-		telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
+		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
 		return "Logging Application Demo V6"; 
 	}
 
