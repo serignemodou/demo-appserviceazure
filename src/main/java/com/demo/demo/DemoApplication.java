@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.microsoft.applicationinsights.attach.ApplicationInsights;
 import com.microsoft.applicationinsights.telemetry.SeverityLevel;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 import com.microsoft.applicationinsights.TelemetryClient;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 
@@ -21,19 +22,28 @@ import org.slf4j.LoggerFactory;
 @RestController
 public class DemoApplication {
 
-	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 	private static final TelemetryClient telemetryClient = new TelemetryClient();
 	Map<String, String> mp = new HashMap<>();
 	
+	public Map<String, String> headersMap = new HashMap<>();
+	public Map<String, String> getRequestHeaders(HttpServletRequest request) {
+		Enumeration<String> headerNames = request.getHeaderNames();
+		
+		while (headerNames.hasMoreElements()) {
+			String headerName = headerNames.nextElement();
+            String headerValue = request.getHeader(headerName);
+            headersMap.put(headerName, headerValue);
+        }
+		return headersMap;
+	}
 
 	@RequestMapping("/") 
 	public String home() { 
-		String username = "modou";
 		mp.put("Squad", "swap");
 		mp.put("Poste", "OPS");
-		logger.info("cs-username=" + username);
 		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
-		return "Logging Application Demo V4"; 
+		telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
+		return "Logging Application Demo V5"; 
 	}
 
 	public static void main(String[] args) {
