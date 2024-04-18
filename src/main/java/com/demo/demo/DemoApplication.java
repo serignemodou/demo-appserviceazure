@@ -41,9 +41,9 @@ public class DemoApplication {
 	public String home() { 
 		mp.put("Squad", "swap");
 		mp.put("Poste", "OPS");
-		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
+		//telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
 		telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
-		return "Logging Application Demo V5"; 
+		return "Logging Application Demo V6"; 
 	}
 
 	public static void main(String[] args) {
