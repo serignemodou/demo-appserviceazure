@@ -7,5 +7,14 @@
 		"logging": {
 			"level": "TRACE"
 		}
+	},
+	"selfDiagnostics": {
+		"destination":"file+console",
+		"level": "TRACE",
+		"file": {
+			"path": "applicationinsights.log",
+			"maxSizeMb": 5,
+			"maxHistory": 1
+		}
 	}
 }

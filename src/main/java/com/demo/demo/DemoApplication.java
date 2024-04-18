@@ -33,7 +33,7 @@ public class DemoApplication {
 		mp.put("Poste", "OPS");
 		logger.info("cs-username=" + username);
 		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
-		return "Logging Application Demo V3"; 
+		return "Logging Application Demo V4"; 
 	}
 
 	public static void main(String[] args) {
