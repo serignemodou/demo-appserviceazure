@@ -16,11 +16,16 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @SpringBootApplication
 @RestController
 public class DemoApplication {
+
+
+	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
 	private static final TelemetryClient telemetryClient = new TelemetryClient();
 	Map<String, String> mp = new HashMap<>();
@@ -34,7 +39,11 @@ public class DemoApplication {
             String headerValue = request.getHeader(headerName);
             headersMap.put(headerName, headerValue);
         }
-		telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
+		String referer = request.getHeader("Referer");
+		mp.put("Referer", referer);
+		//telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
+		//telemetryClient.trackTrace("Referer",SeverityLevel.Information, mp);
+		telemetryClient.trackEvent("EventsCustoms", headersMap, null);
 		return headersMap;
 	}
 
