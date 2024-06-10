@@ -1,5 +1,5 @@
 {
-	"connectionString": "InstrumentationKey=cda314ac-117e-4e70-93c5-a3c567d7cf95;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=8cc0ca1a-2ba6-4f3a-a20e-740654fe48d3",
+	"connectionString": "InstrumentationKey=c99978c9-3710-47e6-a076-5c855ebf9979;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=378e62fb-4317-4f83-875a-c0919e4fa769",
 	"role": {
 		"name": "cloud role demo name"
 	},

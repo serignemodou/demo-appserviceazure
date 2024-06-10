@@ -42,7 +42,7 @@ public class DemoApplication {
 		String referer = request.getHeader("Referer");
 		mp.put("Referer", referer);
 		//telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
-		//telemetryClient.trackTrace("Referer",SeverityLevel.Information, mp);
+		telemetryClient.trackTrace("Referer",SeverityLevel.Information, mp);
 		telemetryClient.trackEvent("EventsCustoms", headersMap, null);
 		return headersMap;
 	}
