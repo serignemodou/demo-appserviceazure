@@ -11,6 +11,7 @@ import com.microsoft.applicationinsights.telemetry.SeverityLevel;
 import jakarta.servlet.http.HttpServletRequest;
 
 import com.microsoft.applicationinsights.TelemetryClient;
+import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class DemoApplication {
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
 	private static final TelemetryClient telemetryClient = new TelemetryClient();
+	RequestTelemetry requestTelemetry = new RequestTelemetry()
 	Map<String, String> mp = new HashMap<>();
 	
 	@RequestMapping("/header") 
@@ -44,6 +46,10 @@ public class DemoApplication {
 		//telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
 		telemetryClient.trackTrace("Referer",SeverityLevel.Information, mp);
 		telemetryClient.trackEvent("EventsCustoms", headersMap, null);
+
+		requestTelemetry.getProperties().put("username", "semodou");
+		telemetryClient.trackRequest(requestTelemetry);
+		
 		return headersMap;
 	}
 
