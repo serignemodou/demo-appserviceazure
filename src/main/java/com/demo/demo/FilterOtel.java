@@ -3,7 +3,6 @@ package com.demo.demo;
 import java.io.IOException;
 import java.util.Enumeration;
 
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
