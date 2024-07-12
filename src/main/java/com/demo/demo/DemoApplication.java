@@ -2,6 +2,7 @@ package com.demo.demo;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,13 +25,14 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @SpringBootApplication
 @RestController
-public class DemoApplication implements Filter{
+public class DemoApplication {
 
 	static final TelemetryClient telemetryClient = new TelemetryClient();
     RequestTelemetry requestTelemetry = new RequestTelemetry();
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
 
+	/* 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
@@ -41,6 +43,7 @@ public class DemoApplication implements Filter{
 		logger.info("Do filer called");
 		
     }
+	*/
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         Enumeration<String> headerNames = request.getHeaderNames();
@@ -56,10 +59,10 @@ public class DemoApplication implements Filter{
 			logger.info("Application version v01");
         }
     }
-
 	@RequestMapping("/") 
-	public String home() { 
-		return "Logging Application Demo V02"; 
+	public String getRequestHeaders(HttpServletRequest request) {
+		logHttpRequestHeaders(request);
+		return "Logging Application Demo V03"; 
 	}
 
 	public static void main(String[] args) {
