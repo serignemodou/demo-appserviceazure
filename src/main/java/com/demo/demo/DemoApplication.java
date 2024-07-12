@@ -55,6 +55,7 @@ public class DemoApplication {
 
 	@RequestMapping("/") 
 	public String home() { 
+		requestTelemetry.getProperties().put("username", "semodou");
 		mp.put("Squad", "swap");
 		mp.put("Poste", "OPS");
 		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
