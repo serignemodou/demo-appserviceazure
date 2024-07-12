@@ -61,7 +61,7 @@ public class DemoApplication {
 		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
 		telemetryClient.trackRequest(requestTelemetry);
 		telemetryClient.trackHttpRequest("test1", null, 0, "200", true);
-		return "Logging Application Demo V8"; 
+		return "Logging Application Demo V9"; 
 	}
 
 	public static void main(String[] args) {
