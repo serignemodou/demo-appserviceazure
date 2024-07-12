@@ -29,7 +29,7 @@ public class DemoApplication {
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
 	private static final TelemetryClient telemetryClient = new TelemetryClient();
-	RequestTelemetry requestTelemetry = new RequestTelemetry()
+	RequestTelemetry requestTelemetry = new RequestTelemetry();
 	Map<String, String> mp = new HashMap<>();
 	
 	@RequestMapping("/header") 
