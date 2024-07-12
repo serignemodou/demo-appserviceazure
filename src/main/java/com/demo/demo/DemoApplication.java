@@ -31,37 +31,17 @@ public class DemoApplication {
 	private static final TelemetryClient telemetryClient = new TelemetryClient();
 	RequestTelemetry requestTelemetry = new RequestTelemetry();
 	Map<String, String> mp = new HashMap<>();
-	
-	@RequestMapping("/header") 
-	public Map<String, String> getRequestHeaders(HttpServletRequest request) {
-		Enumeration<String> headerNames = request.getHeaderNames();
-		Map<String, String> headersMap = new HashMap<>();
-		while (headerNames.hasMoreElements()) {
-			String headerName = headerNames.nextElement();
-            String headerValue = request.getHeader(headerName);
-            headersMap.put(headerName, headerValue);
-        }
-		String referer = request.getHeader("Referer");
-		mp.put("Referer", referer);
-		//telemetryClient.trackTrace("Header Request", SeverityLevel.Information, headersMap);
-		telemetryClient.trackTrace("Referer",SeverityLevel.Information, mp);
-		telemetryClient.trackEvent("EventsCustoms", headersMap, null);
-
-		requestTelemetry.getProperties().put("username", "semodou");
-		telemetryClient.trackRequest(requestTelemetry);
-		
-		return headersMap;
-	}
 
 	@RequestMapping("/") 
 	public String home() { 
-		requestTelemetry.getProperties().put("username", "semodou");
-		mp.put("Squad", "swap");
-		mp.put("Poste", "OPS");
-		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
+		// Set custom properties
+		requestTelemetry.getProperties().put("customProperty1", "value1");
+		requestTelemetry.getProperties().put("customProperty2", "value2");
+		// Set custom others
+		requestTelemetry.setSuccess(true);
+		requestTelemetry.setName("SWAP-TEAMS");
 		telemetryClient.trackRequest(requestTelemetry);
-		telemetryClient.trackHttpRequest("test1", null, 0, "200", true);
-		return "Logging Application Demo V9"; 
+		return "Logging Application Demo V10"; 
 	}
 
 	public static void main(String[] args) {
