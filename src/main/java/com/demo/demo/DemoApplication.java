@@ -59,7 +59,7 @@ public class DemoApplication implements Filter{
 
 	@RequestMapping("/") 
 	public String home() { 
-		return "Logging Application Demo V01"; 
+		return "Logging Application Demo V02"; 
 	}
 
 	public static void main(String[] args) {
