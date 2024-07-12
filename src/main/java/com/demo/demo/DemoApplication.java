@@ -6,14 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microsoft.applicationinsights.attach.ApplicationInsights;
-import com.microsoft.applicationinsights.telemetry.SeverityLevel;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
-import java.util.Enumeration;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,9 +36,8 @@ public class DemoApplication {
 		requestTelemetry.getProperties().put("customProperty2", "value2");
 		// Set custom others
 		requestTelemetry.setSuccess(true);
-		requestTelemetry.setName("SWAP-TEAMS");
 		telemetryClient.trackRequest(requestTelemetry);
-		return "Logging Application Demo V10"; 
+		return "Logging Application Demo V11"; 
 	}
 
 	public static void main(String[] args) {
