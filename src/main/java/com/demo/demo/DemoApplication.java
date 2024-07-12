@@ -54,9 +54,9 @@ public class DemoApplication {
                 String headerValue = headers.nextElement();
                 System.out.println("Header: " + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
-				requestTelemetry.setName("Hello");
-				telemetryClient.trackRequest(requestTelemetry);
             }
+			requestTelemetry.setName("Hello2");
+			telemetryClient.trackRequest(requestTelemetry);
             System.out.println("Application version v01");
 			logger.info("Application version v01");
         }
