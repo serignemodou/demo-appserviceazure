@@ -59,7 +59,7 @@ public class DemoApplication {
 		mp.put("Poste", "OPS");
 		telemetryClient.trackTrace("User details", SeverityLevel.Information, mp);
 		telemetryClient.trackRequest(requestTelemetry);
-		return "Logging Application Demo V6"; 
+		return "Logging Application Demo V7"; 
 	}
 
 	public static void main(String[] args) {
