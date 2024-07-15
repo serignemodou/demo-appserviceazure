@@ -16,5 +16,8 @@
 			"maxSizeMb": 5,
 			"maxHistory": 1
 		}
+	},
+	"customDimensions": {
+		"Teams": "Swap"
 	}
 }
