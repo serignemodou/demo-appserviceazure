@@ -22,8 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Component
 public class FilterOtel implements Filter {
 
-    @Autowired
-    private TelemetryClient telemetryClient;
+    static final TelemetryClient telemetryClient = new TelemetryClient();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
