@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
+import com.microsoft.applicationinsights.telemetry.TelemetryContext;
 import com.microsoft.applicationinsights.telemetry.TraceTelemetry;
 
 import jakarta.servlet.Filter;
@@ -49,8 +50,8 @@ public class FilterOtel implements Filter {
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
               //  System.out.println("Header: " + headerName + " = " + headerValue);
-                requestTelemetry.getProperties().put(headerName, headerValue);
-                traceTelemetry.setMessage("Test Trace");
+                requestTelemetry.getProperties().putIfAbsent(headerName, headerValue);
+               // traceTelemetry.setMessage("Test Trace");
             }
         }
         telemetryClient.trackRequest(requestTelemetry);
