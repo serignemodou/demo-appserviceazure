@@ -49,9 +49,9 @@ public class FilterOtel implements Filter {
         
 
         Enumeration<String> headerNames = request.getHeaderNames();
+        Map<String, String> headersMap = new HashMap<>();
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
-            Map<String, String> headersMap = new HashMap<>();
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
@@ -59,10 +59,11 @@ public class FilterOtel implements Filter {
              //   requestTelemetry.getContext().getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
             }
-            telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
-            telemetryClient.trackRequest(requestTelemetry);
-            telemetryClient.flush();
         }
+
+        telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
+        telemetryClient.trackRequest(requestTelemetry);
+        telemetryClient.flush();
     }
 }
 
