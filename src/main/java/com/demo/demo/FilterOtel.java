@@ -3,22 +3,33 @@ package com.demo.demo;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
+@WebFilter(urlPatterns =  "/*")
+@Component
 public class FilterOtel implements Filter {
 
-    static final TelemetryClient telemetryClient = new TelemetryClient();
-    RequestTelemetry requestTelemetry = new RequestTelemetry();
+    @Autowired
+    private TelemetryClient telemetryClient;
 
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        // Initialization logic, if needed
+    }
+    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
@@ -29,6 +40,7 @@ public class FilterOtel implements Filter {
     }
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
+        RequestTelemetry requestTelemetry = new RequestTelemetry();
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
@@ -38,8 +50,9 @@ public class FilterOtel implements Filter {
                 System.out.println("Header: " + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
             }
-            System.out.println("Application version v01");
+            System.out.println("Application version filter v001");
         }
+        telemetryClient.trackRequest(requestTelemetry);
     }
 }
 
