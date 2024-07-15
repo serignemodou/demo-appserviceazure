@@ -2,6 +2,7 @@ package com.demo.demo;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ import jakarta.servlet.http.HttpServletRequest;
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();
-    static final Telemetry telemetry = null;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -46,17 +46,16 @@ public class FilterOtel implements Filter {
     private void logHttpRequestHeaders(HttpServletRequest request) {
         RequestTelemetry requestTelemetry = new RequestTelemetry();
 
-        ConcurrentMap<String, String> properties = telemetry.getContext().getProperties();
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-              //  System.out.println("Header: " + headerName + " = " + headerValue);
-              properties.put(headerName, headerValue);
-                //requestTelemetry.getContext().getProperties().putIfAbsent(headerName, headerValue);
-               // traceTelemetry.setMessage("Test Trace");
+                System.out.println("Header" + headerName + " = " + headerValue);
+                Map<String, String> properties = requestTelemetry.getProperties();
+                properties.put(headerName, headerValue);
+                System.out.println("????The Request Telemetry ????" + requestTelemetry);
             }
         }
         telemetryClient.trackRequest(requestTelemetry);
