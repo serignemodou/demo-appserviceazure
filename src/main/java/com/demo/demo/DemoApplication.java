@@ -41,6 +41,7 @@ public class DemoApplication implements Filter{
         }
         chain.doFilter(request, response);
 		logger.info("Do filer called");
+		System.out.println("Do Filter Called !");
 		
     }
 	
