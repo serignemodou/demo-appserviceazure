@@ -61,7 +61,7 @@ public class DemoApplication {
 			telemetryClient.trackRequest(requestTelemetry);
         }
     }
-	@RequestMapping("/") 
+	@RequestMapping("/hello") 
 	public String getRequestHeaders(HttpServletRequest request) {
 		logHttpRequestHeaders(request);
 		return "Logging Application Demo V05"; 
