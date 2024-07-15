@@ -25,25 +25,25 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @SpringBootApplication
 @RestController
-public class DemoApplication {
+public class DemoApplication implements Filter{
 
 	static final TelemetryClient telemetryClient = new TelemetryClient();
     RequestTelemetry requestTelemetry = new RequestTelemetry();
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
 
 
-	/* 
+	
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            logHttpRequestHeaders(httpServletRequest);
+            getRequestHeaders(httpServletRequest);
         }
         chain.doFilter(request, response);
 		logger.info("Do filer called");
 		
     }
-	*/
+	
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         Enumeration<String> headerNames = request.getHeaderNames();
