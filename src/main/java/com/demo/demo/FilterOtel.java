@@ -50,7 +50,7 @@ public class FilterOtel implements Filter {
                 String headerValue = headers.nextElement();
               //  System.out.println("Header: " + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
-                traceTelemetry.getProperties().put(headerName, headerValue);
+                traceTelemetry.setMessage("Test Trace");
             }
         }
         telemetryClient.trackRequest(requestTelemetry);
