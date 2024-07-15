@@ -48,7 +48,7 @@ public class FilterOtel implements Filter {
                 String headerValue = headers.nextElement();
                 System.out.println("Header: " + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
-                requestTelemetry.setName(requestTelemetry.getName());
+                requestTelemetry.setName("hello");
             }
             System.out.println("Application version filter v001");
         }
