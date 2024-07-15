@@ -54,17 +54,17 @@ public class DemoApplication {
                 String headerValue = headers.nextElement();
                 System.out.println("Header: " + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
+				String name = requestTelemetry.getName();
+				requestTelemetry.setName(name);
             }
-			requestTelemetry.setName("Hello2");
+			//requestTelemetry.setName("Hello2");
 			telemetryClient.trackRequest(requestTelemetry);
-            System.out.println("Application version v01");
-			logger.info("Application version v01");
         }
     }
 	@RequestMapping("/") 
 	public String getRequestHeaders(HttpServletRequest request) {
 		logHttpRequestHeaders(request);
-		return "Logging Application Demo V04"; 
+		return "Logging Application Demo V05"; 
 	}
 
 	public static void main(String[] args) {
