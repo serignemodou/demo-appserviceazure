@@ -45,7 +45,6 @@ public class FilterOtel implements Filter {
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         RequestTelemetry requestTelemetry = new RequestTelemetry();
-        TraceTelemetry traceTelemetry = new TraceTelemetry();
 
         ConcurrentMap<String, String> properties = telemetry.getContext().getProperties();
         Enumeration<String> headerNames = request.getHeaderNames();
@@ -55,13 +54,12 @@ public class FilterOtel implements Filter {
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
               //  System.out.println("Header: " + headerName + " = " + headerValue);
-                requestTelemetry.getContext().getProperties().putIfAbsent(headerName, headerValue);
-                properties.put(headerName, headerValue);
+              properties.put(headerName, headerValue);
+                //requestTelemetry.getContext().getProperties().putIfAbsent(headerName, headerValue);
                // traceTelemetry.setMessage("Test Trace");
             }
         }
         telemetryClient.trackRequest(requestTelemetry);
-        telemetryClient.trackTrace(traceTelemetry);
     }
 }
 
