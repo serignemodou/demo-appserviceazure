@@ -2,6 +2,7 @@ package com.demo.demo;
 
 import java.io.IOException;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentMap;
 
@@ -10,8 +11,6 @@ import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
-import com.microsoft.applicationinsights.telemetry.Telemetry;
-import com.microsoft.applicationinsights.telemetry.TelemetryContext;
 import com.microsoft.applicationinsights.telemetry.TraceTelemetry;
 
 import jakarta.servlet.Filter;
@@ -22,6 +21,7 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import com.microsoft.applicationinsights.telemetry.SeverityLevel;
 
 @WebFilter(urlPatterns =  "/*")
 @Component
@@ -45,19 +45,27 @@ public class FilterOtel implements Filter {
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         RequestTelemetry requestTelemetry = new RequestTelemetry();
+        TraceTelemetry traceTelemetry = new TraceTelemetry();
+        
 
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
+            Map<String, String> headersMap = new HashMap<>();
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
                 System.out.println("Header" + headerName + " = " + headerValue);
-                requestTelemetry.getContext().getProperties().put(headerName, headerValue);
+             //   requestTelemetry.getContext().getProperties().put(headerName, headerValue);
+             headersMap.put(headerName, headerValue);
             }
+            telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
+            telemetryClient.trackRequest(requestTelemetry);
+            telemetryClient.flush();
         }
-        telemetryClient.trackRequest(requestTelemetry);
-        telemetryClient.flush();
+       
+        
+        
     }
 }
 
