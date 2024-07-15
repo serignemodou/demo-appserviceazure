@@ -54,8 +54,7 @@ public class FilterOtel implements Filter {
                 String headerValue = headers.nextElement();
                 System.out.println("Header" + headerName + " = " + headerValue);
                 Map<String, String> properties = requestTelemetry.getProperties();
-                properties.put(headerName, headerValue);
-                System.out.println("????The Request Telemetry ????" + requestTelemetry);
+                properties.put("Teams", "SWAP");
             }
         }
         telemetryClient.trackRequest(requestTelemetry);
