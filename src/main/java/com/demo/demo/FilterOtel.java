@@ -59,6 +59,7 @@ public class FilterOtel implements Filter {
             }
         }
         telemetryClient.trackRequest(requestTelemetry);
+        telemetryClient.flush();
     }
 }
 
