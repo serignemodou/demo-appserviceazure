@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
+import com.microsoft.applicationinsights.telemetry.TraceTelemetry;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -40,21 +41,20 @@ public class FilterOtel implements Filter {
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         RequestTelemetry requestTelemetry = new RequestTelemetry();
+        TraceTelemetry traceTelemetry = new TraceTelemetry();
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-                System.out.println("Header: " + headerName + " = " + headerValue);
-               // requestTelemetry.getProperties().put(headerName, headerValue);
-                //requestTelemetry.setName("hello");
+              //  System.out.println("Header: " + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
-                requestTelemetry.getProperties().put("_MS.ProcessedByMetricExtractors", "True");
+                traceTelemetry.getProperties().put(headerName, headerValue);
             }
-            System.out.println("Application version filter v001");
         }
         telemetryClient.trackRequest(requestTelemetry);
+        telemetryClient.trackTrace(traceTelemetry);
     }
 }
 
