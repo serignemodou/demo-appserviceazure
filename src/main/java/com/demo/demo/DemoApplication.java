@@ -64,7 +64,7 @@ public class DemoApplication {
 	@RequestMapping("/hello") 
 	public String getRequestHeaders(HttpServletRequest request) {
 		logHttpRequestHeaders(request);
-		return "Logging Application Demo V05"; 
+		return "Logging Application Demo V06"; 
 	}
 
 	public static void main(String[] args) {
