@@ -51,6 +51,7 @@ public class FilterOtel implements Filter {
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
                 System.out.println("Header" + headerName + " = " + headerValue);
+                System.out.println("????+++!!!!" + requestTelemetry.getProperties());
                 requestTelemetry.getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
             }
