@@ -16,5 +16,13 @@
 			"maxSizeMb": 5,
 			"maxHistory": 1
 		}
-	} 
+	},
+	"preview": {
+		"captureHttpClientHeaders": {
+			"requestHeaders": [
+			  "cookies"
+			]
+		  }
+	}
+	  
 }
