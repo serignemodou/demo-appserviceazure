@@ -49,17 +49,12 @@ public class FilterOtel implements Filter {
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
               //  System.out.println("Header" + headerName + " = " + headerValue);
-              //  System.out.println("????+++!!!!" + requestTelemetry.getProperties());
-                requestTelemetry.getProperties().put("_MS.ProcessedByMetricExtractors", "true");
-                requestTelemetry.getContext().getOperation().setName("Get Swap");
+                requestTelemetry.setId(request.getRequestId());
                 requestTelemetry.getProperties().put(headerName, headerValue);
-             headersMap.put(headerName, headerValue);
-             System.out.println("???XXXXXWWWW???"+ requestTelemetry.getContext());
+                //headersMap.put(headerName, headerValue);
             }
         }
        // telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
-       //System.out.println("++LLLLl!!!!!!" + requestTelemetry.getName());
-       //System.out.println("++PPPPP!!!!!!" + requestTelemetry.getProperties());
         telemetryClient.trackRequest(requestTelemetry);
       //  telemetryClient.flush();
     }
