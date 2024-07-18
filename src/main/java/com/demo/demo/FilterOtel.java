@@ -51,13 +51,13 @@ public class FilterOtel implements Filter {
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
                 System.out.println("Header" + headerName + " = " + headerValue);
-                requestTelemetry.getContext().getProperties().put(headerName, headerValue);
+                requestTelemetry.getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
             }
         }
-        telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
+       // telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
         telemetryClient.trackRequest(requestTelemetry);
-        telemetryClient.flush();
+      //  telemetryClient.flush();
     }
 }
 
