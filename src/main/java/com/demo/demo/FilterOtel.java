@@ -48,14 +48,15 @@ public class FilterOtel implements Filter {
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-                System.out.println("Header" + headerName + " = " + headerValue);
-                System.out.println("????+++!!!!" + requestTelemetry.getProperties());
+              //  System.out.println("Header" + headerName + " = " + headerValue);
+              //  System.out.println("????+++!!!!" + requestTelemetry.getProperties());
                 requestTelemetry.getProperties().put("_MS.ProcessedByMetricExtractors", "true");
                 requestTelemetry.getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
             }
         }
        // telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
+       System.out.println("++LLLLl!!!!!!" + requestTelemetry);
         telemetryClient.trackRequest(requestTelemetry);
       //  telemetryClient.flush();
     }
