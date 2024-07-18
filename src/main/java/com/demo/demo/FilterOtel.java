@@ -4,14 +4,10 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentMap;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
-import com.microsoft.applicationinsights.telemetry.TraceTelemetry;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -45,7 +41,6 @@ public class FilterOtel implements Filter {
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         RequestTelemetry requestTelemetry = new RequestTelemetry();
-        TraceTelemetry traceTelemetry = new TraceTelemetry();
         
 
         Enumeration<String> headerNames = request.getHeaderNames();
@@ -56,11 +51,10 @@ public class FilterOtel implements Filter {
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
                 System.out.println("Header" + headerName + " = " + headerValue);
-             //   requestTelemetry.getContext().getProperties().put(headerName, headerValue);
+                requestTelemetry.getContext().getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
             }
         }
-
         telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
         telemetryClient.trackRequest(requestTelemetry);
         telemetryClient.flush();
