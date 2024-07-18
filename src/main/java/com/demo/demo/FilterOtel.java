@@ -51,6 +51,7 @@ public class FilterOtel implements Filter {
               //  System.out.println("Header" + headerName + " = " + headerValue);
               //  System.out.println("????+++!!!!" + requestTelemetry.getProperties());
                 requestTelemetry.getProperties().put("_MS.ProcessedByMetricExtractors", "true");
+                requestTelemetry.getContext().getOperation().setName("Get Swap");
                 requestTelemetry.getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
              System.out.println("???XXXXXWWWW???"+ requestTelemetry.getContext());
