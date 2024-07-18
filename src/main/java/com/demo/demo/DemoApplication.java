@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class DemoApplication {
 	@RequestMapping("/") 
 	public String getRequestHeaders(HttpServletRequest request) {
-		return "Logging Application Demo V21-rc"; 
+		return "Logging Application Demo V22"; 
 	}
 
 	public static void main(String[] args) {
