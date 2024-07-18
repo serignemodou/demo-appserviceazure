@@ -52,7 +52,7 @@ public class FilterOtel implements Filter {
                 String headerValue = headers.nextElement();
                 System.out.println("Header" + headerName + " = " + headerValue);
                 System.out.println("????+++!!!!" + requestTelemetry.getProperties());
-                requestTelemetry.setName("custom header");
+                requestTelemetry.getProperties().put("_MS.ProcessedByMetricExtractors", "true");
                 requestTelemetry.getProperties().put(headerName, headerValue);
              headersMap.put(headerName, headerValue);
             }
