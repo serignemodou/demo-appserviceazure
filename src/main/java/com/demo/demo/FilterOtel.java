@@ -57,6 +57,7 @@ public class FilterOtel implements Filter {
         }
        // telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
        System.out.println("++LLLLl!!!!!!" + requestTelemetry.getName());
+       System.out.println("???XXXXXWWWW???"+ requestTelemetry.getContext());
        System.out.println("++PPPPP!!!!!!" + requestTelemetry.getProperties());
         telemetryClient.trackRequest(requestTelemetry);
       //  telemetryClient.flush();
