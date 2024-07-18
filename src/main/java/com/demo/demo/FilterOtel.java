@@ -50,6 +50,7 @@ public class FilterOtel implements Filter {
                 String headerValue = headers.nextElement();
               //  System.out.println("Header" + headerName + " = " + headerValue);
                 requestTelemetry.setId(request.getRequestId());
+                requestTelemetry.setName(request.getMethod());
                 requestTelemetry.getProperties().put(headerName, headerValue);
                 //headersMap.put(headerName, headerValue);
             }
