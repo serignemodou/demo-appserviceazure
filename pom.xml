@@ -44,13 +44,18 @@
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>
-			<artifactId>applicationinsights-web-auto</artifactId>
-			<version>3.4.3</version>
+			<artifactId>applicationinsights-agent</artifactId>
+			<version>3.5.3</version>
 		</dependency>
 		<dependency>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>applicationinsights-spring-boot-starter</artifactId>
-			<version>3.4.3</version>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-api</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-sdk</artifactId>
+			<version>1.7.0</version>
 		</dependency>
 	</dependencies>
 
