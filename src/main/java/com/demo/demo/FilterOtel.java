@@ -17,7 +17,6 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
-import com.microsoft.applicationinsights.telemetry.SeverityLevel;
 
 @WebFilter(urlPatterns =  "/*")
 @Component
@@ -41,7 +40,6 @@ public class FilterOtel implements Filter {
     
     private void logHttpRequestHeaders(HttpServletRequest request) {
         RequestTelemetry requestTelemetry = new RequestTelemetry();
-        
 
         Enumeration<String> headerNames = request.getHeaderNames();
         Map<String, String> headersMap = new HashMap<>();

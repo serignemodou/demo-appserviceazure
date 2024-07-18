@@ -42,6 +42,16 @@
 			<artifactId>applicationinsights-web</artifactId>
 			<version>3.4.3</version>
 		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>applicationinsights-web-auto</artifactId>
+			<version>3.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>applicationinsights-spring-boot-starter</artifactId>
+			<version>3.4.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
