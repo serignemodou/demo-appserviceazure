@@ -17,10 +17,11 @@ import jakarta.servlet.http.HttpServletRequest;
 public class DemoApplication {
 	@RequestMapping("/") 
 	public String getRequestHeaders(HttpServletRequest request) {
-		return "Logging Application Demo V3"; 
+		return "Logging Application Demo V4"; 
 	}
 
 	public static void main(String[] args) {
+		System.setProperty("applicationinsights.configuration.file", "/src/main/resources/applicationinsights.json");
         ApplicationInsights.attach();
         SpringApplication.run(DemoApplication.class, args);
     }
