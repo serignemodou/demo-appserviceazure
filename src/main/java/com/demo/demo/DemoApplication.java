@@ -21,7 +21,7 @@ public class DemoApplication {
 	}
 
 	public static void main(String[] args) {
-		System.setProperty("applicationinsights.configuration.file", "/src/main/resources/applicationinsights.json");
+		System.setProperty("applicationinsights.configuration.file", "applicationinsights.json");
         ApplicationInsights.attach();
         SpringApplication.run(DemoApplication.class, args);
     }
