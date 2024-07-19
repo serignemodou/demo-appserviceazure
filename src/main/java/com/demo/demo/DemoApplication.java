@@ -15,11 +15,15 @@ import jakarta.servlet.http.HttpServletRequest;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
-	@RequestMapping("/") 
+	@RequestMapping("/test") 
 	public String getRequestHeaders(HttpServletRequest request) {
 		return "Logging Application Demo V4"; 
 	}
 
+	@RequestMapping("/demo")
+	public String showInformation(){
+		return "Hello demo";
+	}
 	public static void main(String[] args) {
 		System.setProperty("applicationinsights.configuration.file", "applicationinsights.json");
         ApplicationInsights.attach();
