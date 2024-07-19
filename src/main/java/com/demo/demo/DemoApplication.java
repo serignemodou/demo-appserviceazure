@@ -20,7 +20,7 @@ public class DemoApplication {
 		return "Logging Application Demo V4"; 
 	}
 
-	@RequestMapping("/demo")
+	@RequestMapping("/demo/1")
 	public String showInformation(){
 		return "Hello demo";
 	}
