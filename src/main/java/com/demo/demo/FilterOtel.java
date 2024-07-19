@@ -18,7 +18,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
-@WebFilter(urlPatterns = {"/demo/*"})
+//@WebFilter(urlPatterns =  "/demo/*")
 @Component
 public class FilterOtel implements Filter {
 
@@ -28,7 +28,9 @@ public class FilterOtel implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+            if (httpServletRequest.getServletPath().startsWith("/demo/*")) {
             logHttpRequestHeaders(httpServletRequest);
+            }
         }
         chain.doFilter(request, response);
     }
