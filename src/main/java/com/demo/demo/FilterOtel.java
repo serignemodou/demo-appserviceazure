@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
+import com.microsoft.applicationinsights.telemetry.SeverityLevel;
 import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
 import jakarta.servlet.Filter;
@@ -53,8 +54,8 @@ public class FilterOtel implements Filter {
                 headersMap.put(headerName, headerValue);
             }
         }
-       // telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
-        telemetryClient.trackRequest(requestTelemetry);
+        telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
+        //telemetryClient.trackRequest(requestTelemetry);
         telemetryClient.flush();
     }
 }
