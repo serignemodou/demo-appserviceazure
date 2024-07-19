@@ -19,7 +19,7 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
-//@WebFilter(urlPatterns =  "/demo/*")
+@WebFilter(urlPatterns =  "/*")
 @Component
 public class FilterOtel implements Filter {
 
@@ -51,7 +51,6 @@ public class FilterOtel implements Filter {
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-                System.out.println("Header!!!!!" + headerName + " = " + headerValue);
                 requestTelemetry.getProperties().put(headerName, headerValue);
                 headersMap.put(headerName, headerValue);
             }
