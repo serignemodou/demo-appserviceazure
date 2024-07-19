@@ -12,7 +12,6 @@ import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
@@ -24,19 +23,15 @@ import jakarta.servlet.http.HttpServletRequest;
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        // Initialization logic, if needed
-    }
     
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            if (httpServletRequest.getRequestURI().startsWith("/demo/*")) {
-                logHttpRequestHeaders(httpServletRequest);
-            }
+            logHttpRequestHeaders(httpServletRequest);
+           // if (httpServletRequest.getRequestURI().startsWith("/demo/*")) {
+                
+            //}
         }
         chain.doFilter(request, response);
     }
@@ -56,7 +51,6 @@ public class FilterOtel implements Filter {
             }
         }
         telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
-        //telemetryClient.trackRequest(requestTelemetry);
         telemetryClient.flush();
     }
 }

@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class DemoApplication {
 	@RequestMapping("/test") 
 	public String getRequestHeaders(HttpServletRequest request) {
-		return "Logging Application Demo V7"; 
+		return "Logging Application Demo V8"; 
 	}
 
 	@RequestMapping("/demo/1")
@@ -25,7 +25,6 @@ public class DemoApplication {
 		return "Hello demo";
 	}
 	public static void main(String[] args) {
-		System.setProperty("applicationinsights.configuration.file", "applicationinsights.json");
         ApplicationInsights.attach();
         SpringApplication.run(DemoApplication.class, args);
     }
