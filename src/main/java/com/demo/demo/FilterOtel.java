@@ -21,7 +21,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
 @ServletComponentScan
-@WebFilter(urlPatterns = "/demo")
+@WebFilter(urlPatterns = "/demo/*")
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();
