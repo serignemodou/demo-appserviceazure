@@ -17,12 +17,12 @@ import jakarta.servlet.http.HttpServletRequest;
 public class DemoApplication {
 	@RequestMapping("/test") 
 	public String getRequestHeaders(HttpServletRequest request) {
-		return "Logging Application Demo V2"; 
+		return "Logging Application Demo V5"; 
 	}
 
 	@RequestMapping("/demo/v1")
 	public String showInformation(){
-		return "Hello demo v1";
+		return "Hello demo v1-rc";
 	}
 
 	@RequestMapping("/demo")
