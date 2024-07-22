@@ -28,9 +28,7 @@ public class FilterOtel implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            if (httpServletRequest.getServletPath().startsWith("/demo/*")) {
             logHttpRequestHeaders(httpServletRequest);
-            }
         }
         chain.doFilter(request, response);
     }
