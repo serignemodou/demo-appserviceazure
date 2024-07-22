@@ -22,6 +22,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 
 @WebFilter(urlPatterns = "/*")
+@Component
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();
@@ -49,7 +50,7 @@ public class FilterOtel implements Filter {
                 headersMap.put(headerName, headerValue);
             }
         }
-        telemetryClient.trackTrace("users details", SeverityLevel.Information, headersMap);
+        telemetryClient.trackTrace("http headers", SeverityLevel.Information, headersMap);
         telemetryClient.flush();
     }
 }
