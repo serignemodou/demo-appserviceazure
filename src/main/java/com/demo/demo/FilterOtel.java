@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
@@ -18,7 +20,8 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
-//@WebFilter(urlPatterns = "https://webappdemou.azurewebsites.net/demo")
+@ServletComponentScan
+@WebFilter(urlPatterns = "/demo")
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();

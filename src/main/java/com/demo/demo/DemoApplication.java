@@ -17,17 +17,17 @@ import jakarta.servlet.http.HttpServletRequest;
 public class DemoApplication {
 	@RequestMapping("/test") 
 	public String getRequestHeaders(HttpServletRequest request) {
-		return "Logging Application Demo V7"; 
+		return "Logging Application Demo V8"; 
 	}
 
 	@RequestMapping("/demo/v1")
 	public String showInformation(){
-		return "Hello demo v1-rc";
+		return "Hello demo v1-the-best";
 	}
 
 	@RequestMapping("/demo")
 	public String showV2(){
-		return "Hello demo v2";
+		return "Hello demo v2-good-solution";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();
