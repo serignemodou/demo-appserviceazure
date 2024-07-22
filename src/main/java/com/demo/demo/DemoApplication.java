@@ -18,12 +18,12 @@ public class DemoApplication {
 
 	@RequestMapping("/app/v1/test")
 	public String appV1(){
-		return "app v1 version rc7";
+		return "app v1 version rc8";
 	}
 
 	@RequestMapping("/app/v2")
 	public String appV2(){
-		return "app v2 version rc7";
+		return "app v2 version rc8";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();

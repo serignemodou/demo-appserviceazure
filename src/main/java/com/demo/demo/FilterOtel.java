@@ -23,7 +23,6 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @WebFilter(urlPatterns = "/*")
 @Component
-@ServletComponentScan
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();
