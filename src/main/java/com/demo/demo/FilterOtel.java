@@ -21,7 +21,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
 
-@WebFilter(urlPatterns = "/app/v1")
+@WebFilter(urlPatterns = "/*")
 @Component
 @ServletComponentScan
 public class FilterOtel implements Filter {
