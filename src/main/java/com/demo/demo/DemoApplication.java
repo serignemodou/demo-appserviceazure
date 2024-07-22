@@ -15,19 +15,15 @@ import jakarta.servlet.http.HttpServletRequest;
 @SpringBootApplication
 @RestController
 public class DemoApplication {
-	@RequestMapping("/test") 
-	public String getRequestHeaders(HttpServletRequest request) {
-		return "Logging Application Demo V11"; 
+
+	@RequestMapping("/app/v1")
+	public String appV1(){
+		return "app v1 version";
 	}
 
-	@RequestMapping("/demo/v1")
-	public String showInformation(){
-		return "Hello demo v1-the-best";
-	}
-
-	@RequestMapping("/demo")
-	public String showV2(){
-		return "Hello demo v2-good-solution";
+	@RequestMapping("/app/v2")
+	public String appV2(){
+		return "app v2 version";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();
