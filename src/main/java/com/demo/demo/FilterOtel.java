@@ -14,6 +14,7 @@ import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
@@ -21,7 +22,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 
 
-@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/app/v1")
 @Component
 public class FilterOtel implements Filter {
 
