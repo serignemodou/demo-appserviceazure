@@ -32,7 +32,7 @@ public class FilterOtel implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            if (httpServletRequest.getRequestURI().startsWith("/app/v1/*")) {
+            if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
                 logHttpRequestHeaders(httpServletRequest);
             }
         }
