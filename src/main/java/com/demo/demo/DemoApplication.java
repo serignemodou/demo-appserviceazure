@@ -16,14 +16,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 public class DemoApplication {
 
-	@RequestMapping("/app/v1")
+	@RequestMapping("/app/v1/test")
 	public String appV1(){
-		return "app v1 version rc4";
+		return "app v1 version rc5";
 	}
 
 	@RequestMapping("/app/v2")
 	public String appV2(){
-		return "app v2 version rc4";
+		return "app v2 version rc5";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();
