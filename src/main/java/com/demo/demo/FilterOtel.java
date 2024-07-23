@@ -33,7 +33,7 @@ public class FilterOtel implements Filter {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
             if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                logHttpRequestHeaders(httpServletRequest, );
+                logHttpRequestHeaders(httpServletRequest, httpServletResponse);
             }
         }
         chain.doFilter(request, response);
