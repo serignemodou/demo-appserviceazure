@@ -5,7 +5,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
@@ -19,6 +18,7 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 @WebFilter
@@ -31,16 +31,15 @@ public class FilterOtel implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
         if (request instanceof HttpServletRequest) {
             HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+            HttpServletResponse httpServletResponse = (HttpServletResponse) response;
             if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                logHttpRequestHeaders(httpServletRequest);
+                logHttpRequestHeaders(httpServletRequest, );
             }
         }
         chain.doFilter(request, response);
     }
     
-    private void logHttpRequestHeaders(HttpServletRequest request) {
-        RequestTelemetry requestTelemetry = new RequestTelemetry();
-
+    private void logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
         Enumeration<String> headerNames = request.getHeaderNames();
         Map<String, String> headersMap = new HashMap<>();
         while (headerNames.hasMoreElements()) {
@@ -48,8 +47,11 @@ public class FilterOtel implements Filter {
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-                requestTelemetry.getProperties().put(headerName, headerValue);
+                int status = response.getStatus();
+                String method = request.getMethod();
                 headersMap.put(headerName, headerValue);
+                headersMap.put("ResultCode", String.valueOf(status));
+                headersMap.put("Method", method);
             }
         }
         telemetryClient.trackTrace("http headers", SeverityLevel.Information, headersMap);
