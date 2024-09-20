@@ -36,14 +36,11 @@ public class FilterOtel implements Filter {
         try{
             if (request instanceof HttpServletRequest) {
                 if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                    System.out.println("Process Request !!!!");
+                    headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
                 }
             }
             chain.doFilter(request, response);
         } finally {
-            headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
-            int statusCode = httpServletResponse.getStatus();
-            headers.put("Status Code", String.valueOf(statusCode));
             telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
             telemetryClient.flush();
         }
