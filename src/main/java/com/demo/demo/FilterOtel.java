@@ -41,6 +41,7 @@ public class FilterOtel implements Filter {
             }
             chain.doFilter(request, response);
         } finally {
+            System.out.println("Header !!!!"+ headers);
             int statusCode = httpServletResponse.getStatus();
             headers.put("Status Code", String.valueOf(statusCode));
             telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
