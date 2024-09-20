@@ -60,13 +60,11 @@ public class FilterOtel implements Filter {
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             Enumeration<String> headers = request.getHeaders(headerName);
+            String method = request.getMethod();
+            headersMap.put("Method", method);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-            //    int status = response.getStatus();
-                String method = request.getMethod();
                 headersMap.put(headerName, headerValue);
-             //   headersMap.put("ResultCode", String.valueOf(status));
-                headersMap.put("Method", method);
             }
         }
        return headersMap;
