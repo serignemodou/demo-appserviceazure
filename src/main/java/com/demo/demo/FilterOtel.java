@@ -32,23 +32,20 @@ public class FilterOtel implements Filter {
         
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        
+        Map<String, String>  headers = new HashMap<>();
         try{
             if (request instanceof HttpServletRequest) {
                 if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                    logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+                    headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
                 }
             }
             chain.doFilter(request, response);
         } finally {
-            Map<String, String> headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
             int statusCode = httpServletResponse.getStatus();
             headers.put("Status Code", String.valueOf(statusCode));
             telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
             telemetryClient.flush();
         }
-
-
     }
     
     private Map<String, String> logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
