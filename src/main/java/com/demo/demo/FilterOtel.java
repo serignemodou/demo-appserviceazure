@@ -65,7 +65,7 @@ public class FilterOtel implements Filter {
                 headersMap.put("Method", method);
             }
         }
-        telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
+        telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headersMap);
         telemetryClient.flush();
        // return headersMap;
     }
