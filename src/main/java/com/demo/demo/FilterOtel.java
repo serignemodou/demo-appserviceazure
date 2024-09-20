@@ -44,6 +44,8 @@ public class FilterOtel implements Filter {
             chain.doFilter(request, response);
         } finally {
             Map<String, String> headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+            int statusCode = httpServletResponse.getStatus();
+            headers.put("Status Code", String.valueOf(statusCode));
             telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
             telemetryClient.flush();
         }
@@ -59,10 +61,10 @@ public class FilterOtel implements Filter {
             Enumeration<String> headers = request.getHeaders(headerName);
             while (headers.hasMoreElements()) {
                 String headerValue = headers.nextElement();
-                int status = response.getStatus();
+            //    int status = response.getStatus();
                 String method = request.getMethod();
                 headersMap.put(headerName, headerValue);
-                headersMap.put("ResultCode", String.valueOf(status));
+             //   headersMap.put("ResultCode", String.valueOf(status));
                 headersMap.put("Method", method);
             }
         }
