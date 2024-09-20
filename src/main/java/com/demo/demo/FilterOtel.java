@@ -43,13 +43,14 @@ public class FilterOtel implements Filter {
             }
             chain.doFilter(request, response);
         } finally {
-            System.out.println("Hiii");
+            System.out.println("HHHH");
+
         }
 
 
     }
     
-    private Map<String, String> logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
+    private void logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
         Enumeration<String> headerNames = request.getHeaderNames();
         Map<String, String> headersMap = new HashMap<>();
         while (headerNames.hasMoreElements()) {
@@ -64,7 +65,9 @@ public class FilterOtel implements Filter {
                 headersMap.put("Method", method);
             }
         }
-        return headersMap;
+        telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
+        telemetryClient.flush();
+       // return headersMap;
     }
 }
 
