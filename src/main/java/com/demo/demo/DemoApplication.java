@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.microsoft.applicationinsights.attach.ApplicationInsights;
 
 
-import jakarta.servlet.http.HttpServletRequest; 
-
-
 @SpringBootApplication
 @RestController
 public class DemoApplication {
