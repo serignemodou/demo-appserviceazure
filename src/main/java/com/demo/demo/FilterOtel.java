@@ -29,17 +29,22 @@ public class FilterOtel implements Filter {
     
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
-        if (request instanceof HttpServletRequest) {
-            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-            if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                logHttpRequestHeaders(httpServletRequest, httpServletResponse);
-            }
-        }
-        chain.doFilter(request, response);
+        
+        HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-        int statusCode = httpServletResponse.getStatus();
-        System.out.println("STATUS CODE !!!!!"+statusCode);
+        try{
+            if (request instanceof HttpServletRequest) {
+
+                if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
+                    logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+                }
+            }
+            chain.doFilter(request, response);
+        } finally {
+            int statusCode = httpServletResponse.getStatus();
+            System.out.println("STATUS CODE !!!!"+statusCode);
+        }
+
 
     }
     
