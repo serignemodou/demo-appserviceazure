@@ -34,11 +34,13 @@ public class FilterOtel implements Filter {
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
             if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
                 logHttpRequestHeaders(httpServletRequest, httpServletResponse);
-                int statusCode = httpServletResponse.getStatus();
-                System.out.println("STATUS CODE !!!!!"+statusCode);
             }
         }
         chain.doFilter(request, response);
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+        int statusCode = httpServletResponse.getStatus();
+        System.out.println("STATUS CODE !!!!!"+statusCode);
+
     }
     
     private void logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
