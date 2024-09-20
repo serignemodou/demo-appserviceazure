@@ -32,23 +32,26 @@ public class FilterOtel implements Filter {
         
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+        
         try{
             if (request instanceof HttpServletRequest) {
 
                 if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                    logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+                    System.out.println("hello 8!!");
+                   // logHttpRequestHeaders(httpServletRequest, httpServletResponse);
                 }
             }
             chain.doFilter(request, response);
         } finally {
-            int statusCode = httpServletResponse.getStatus();
-            System.out.println("STATUS CODE !!!!"+statusCode);
+            Map<String, String> headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+            telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
+            telemetryClient.flush();
         }
 
 
     }
     
-    private void logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
+    private Map<String, String> logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
         Enumeration<String> headerNames = request.getHeaderNames();
         Map<String, String> headersMap = new HashMap<>();
         while (headerNames.hasMoreElements()) {
@@ -63,8 +66,7 @@ public class FilterOtel implements Filter {
                 headersMap.put("Method", method);
             }
         }
-        telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headersMap);
-        telemetryClient.flush();
+        return headersMap;
     }
 }
 
