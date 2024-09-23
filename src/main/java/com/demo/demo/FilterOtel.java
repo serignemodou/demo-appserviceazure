@@ -39,7 +39,7 @@ public class FilterOtel implements Filter {
                 chain.doFilter(request, response);
             }finally{
                 headers.put("StatusCode", String.valueOf(httpServletResponse.getStatus()));
-                telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
+                telemetryClient.trackTrace("http headers opentelemetry, Message: "+getCustomMessageOfStatusCode(httpServletResponse.getStatus()), SeverityLevel.Information, headers);
                 telemetryClient.flush();
             }
         }
@@ -59,6 +59,24 @@ public class FilterOtel implements Filter {
             }
         }
        return headersMap;
+    }
+
+    private String getCustomMessageOfStatusCode(int statusCode ) {
+        switch (statusCode) {
+            case HttpServletResponse.SC_OK:
+                return "OK";
+            case HttpServletResponse.SC_NOT_FOUND:
+                return "Not Found";
+            case HttpServletResponse.SC_INTERNAL_SERVER_ERROR:
+                return "Internal Server Error";
+            case HttpServletResponse.SC_UNAUTHORIZED:
+                return "Unauthorized";
+            case HttpServletResponse.SC_FORBIDDEN:
+                return "Forbidden";
+        
+            default:
+                return "unknown status";
+        }
     }
 }
 
