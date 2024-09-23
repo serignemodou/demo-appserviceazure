@@ -35,33 +35,17 @@ public class FilterOtel implements Filter {
         Map<String, String>  headers = new HashMap<>();
         if  (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
             try{
-                headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+                headers = logHttpRequestHeaders(httpServletRequest);
                 chain.doFilter(request, response);
             }finally{
-                int statusCode = httpServletResponse.getStatus();
-                headers.put("StatusCode", String.valueOf(statusCode));
+                headers.put("StatusCode", String.valueOf(httpServletResponse.getStatus()));
                 telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
                 telemetryClient.flush();
             }
         }
-        /* 
-        try{
-            if (request instanceof HttpServletRequest) {
-                if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
-                    headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
-                }
-            }
-            chain.doFilter(request, response);
-        } finally {
-            int statusCode = httpServletResponse.getStatus();
-            headers.put("StatusCode", String.valueOf(statusCode));
-            telemetryClient.trackTrace("http headers opentelemetry", SeverityLevel.Information, headers);
-            telemetryClient.flush();
-        }
-        */
     }
     
-    private Map<String, String> logHttpRequestHeaders(HttpServletRequest request, HttpServletResponse response) {
+    private Map<String, String> logHttpRequestHeaders(HttpServletRequest request) {
         Enumeration<String> headerNames = request.getHeaderNames();
         Map<String, String> headersMap = new HashMap<>();
         while (headerNames.hasMoreElements()) {
