@@ -33,9 +33,11 @@ public class FilterOtel implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         Map<String, String>  headers = new HashMap<>();
-        if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
+        if  (request instanceof HttpServletRequest){
             try{
-                headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+                if (httpServletRequest.getRequestURI().startsWith("/app/v1")) {
+                    headers = logHttpRequestHeaders(httpServletRequest, httpServletResponse);
+                }
                 chain.doFilter(request, response);
             }finally{
                 int statusCode = httpServletResponse.getStatus();
