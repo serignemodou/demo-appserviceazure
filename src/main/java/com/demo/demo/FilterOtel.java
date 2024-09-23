@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.telemetry.SeverityLevel;
-import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
