@@ -9,7 +9,7 @@ env:
   JAVA_VERSION: "17"
   TAGS: "1.0.0"
   CONTAINER_REGISTRY: "smodou"
-  REPOSITORY_NAME: "webapp-java"
+  REPOSITORY_NAME: "webappjava"
     
 jobs:
   code-scan:
