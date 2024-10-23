@@ -3,7 +3,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package
-FROM openjdk:24-ea-19-jdk-slim
+FROM openjdk:17-alpine
 VOLUME /tmp
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
