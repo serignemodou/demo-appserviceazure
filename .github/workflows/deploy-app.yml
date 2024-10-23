@@ -7,54 +7,33 @@ on:
 
 env:
   JAVA_VERSION: "17"
-  TAGS: "1.0.0"
-  CONTAINER_REGISTRY: "smodou"
-  REPOSITORY_NAME: "webappjava"
     
 jobs:
   code-scan:
     name: sast-test
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
 
-    steps:
-      - uses: actions/checkout@v3
-        name: checkout code
-      - name: perform sast
-        uses: ShiftLeftSecurity/scan-action@master
-  build:
-    name: build-apps
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up JDK ${{ env.JAVA_VERSION }}
-        uses: actions/setup-java@v3
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-
-      - name: Build with Maven
-        run: mvn clean install -DskipTests
-
-
-
-  contenerized:
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        env:
-          DOCKER_CONTENT_TRUST: 1
+        name: checkout code
 
-      - name: Build docker image
-        run: docker build --build-arg DOCKER_CONTENT_TRUST=1 . -t ${{ env.CONTAINER_REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAGS }}
-
-      - name: Scan docker image vulnerabilities
-        uses: Azure/container-scan@v0
+      - uses: actions/setup-java@v1
         with:
-          image-name: ${{ env.CONTAINER_REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAGS }}
-          run-quality-checks: true
+          go-version: ${{ env.JAVA_VERSION }}
 
-      - name: Logging docker hub registry
-        run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
+      - name: scan code with codeql
+        uses: github/codeql-action/init@v3
+        with:
+          languages: java
 
-      - name: Push docker image to registry
-        run: docker push ${{ env.CONTAINER_REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAGS }}
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+      - name: Upload file SARIF
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: results.sarif
