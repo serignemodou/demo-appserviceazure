@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java' ]
+        language: [ 'java', 'kotlin' ]
 
     steps:
       - name: checkout code
@@ -33,13 +33,13 @@ jobs:
           distribution: 'temurin'
           architecture: x64
 
-      - name: Build Java Code
-        run: mvn clean install -DskipTests
-
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
+
+      - name: Build Java Project
+        run: mvn clean package
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
