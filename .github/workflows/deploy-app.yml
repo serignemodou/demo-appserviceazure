@@ -30,6 +30,8 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'temurin'
+          architecture: x64
 
       - name: Build Java Code
         run: mvn clean install -DskipTests
