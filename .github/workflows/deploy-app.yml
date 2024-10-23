@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java', 'kotlin' ]
+        language: [ 'java' ]
 
     steps:
       - name: checkout code
@@ -45,7 +45,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
         continue-on-error: false # Stop workflow if CodeQl analysis is false
         with:
-          upload: false
+          upload: false # Disable auto upload result, set true when SARIF is enabled
           
       #- name: Upload file SARIF
       #  uses: github/codeql-action/upload-sarif@v3 
