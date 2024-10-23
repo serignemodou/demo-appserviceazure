@@ -65,10 +65,8 @@ jobs:
         run: docker build --build-arg DOCKER_CONTENT_TRUST=1 . -t ${{ env.CONTAINER_REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAGS }}
 
       - name: Scan docker image
-        uses: aquasecurity/trivy-action@0.27.0
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: '${{ env.CONTAINER_REGISTRY }}/${{ env.REPOSITORY_NAME }}:${{ env.TAGS }}'
           exit-code: '1'
-          ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
-          vuln-type: 'os,library'
