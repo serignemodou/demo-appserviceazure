@@ -18,12 +18,14 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 100,
-		"requests": {
-			"percentage": 0
-		},
-		"traces": {
-            "percentage": 100
-        }
+		"percentage": 10,
+		"overrides": {
+			"requests": {
+			  "percentage": 0
+			},
+			"traces": {
+				"percentage": 0
+			}
+		}
 	}
 }

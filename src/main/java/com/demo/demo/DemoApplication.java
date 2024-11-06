@@ -20,7 +20,7 @@ public class DemoApplication {
 
 	@RequestMapping("/app/v1/health-check")
 	public String appV2(){
-		return "tenant just path after the domain v+6";
+		return "tenant just path after the domain v+7";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();
