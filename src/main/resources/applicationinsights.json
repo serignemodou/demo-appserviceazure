@@ -22,7 +22,7 @@
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
-				"percentage": 100, 
+				"percentage": 0, 
 				"attributes": [
 				  {
 					"key": "url.path",
