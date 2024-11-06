@@ -22,8 +22,20 @@
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
-				"percentage": 0
-			}
+				"attributes": [
+				  {
+					"key": "url.path",
+					"value": ".*/tenants.*",
+					"matchType": "regexp"
+				  },
+				  {
+					"key": "name",
+					"value": ".*GET.*",
+					"matchType": "regexp"
+				  }
+				],
+				"percentage": 0 
+			  }
 		]
 	}
 }
