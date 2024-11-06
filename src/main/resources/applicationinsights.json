@@ -18,56 +18,19 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 0,
+		"percentage": 10,
 		"overrides": [
-		  {
-			"telemetryType": "request",
-			"attributes": [
+			{
+			  "telemetryType": "request",
+			  "attributes": [
 				{
 				  "key": "url.path",
-				  "value": ".*/tenants.*",
-				  "matchType": "regexp"
-				},
-				{
-				  "key": "name",
-				  "value": ".*POST.*",
-				  "matchType": "regexp"
+				  "value": "/health-check",
+				  "matchType": "strict"
 				}
 			  ],
-			  "percentage": 0 
-		  },
-		  {
-			"telemetryType": "request",
-			"attributes": [
-				{
-				  "key": "url.path",
-				  "value": ".*/tenants.*",
-				  "matchType": "regexp"
-				},
-				{
-				  "key": "name",
-				  "value": ".*GET.*",
-				  "matchType": "regexp"
-				}
-			  ],
-			  "percentage": 0 
-		  },
-		  {
-			"telemetryType": "request",
-			"attributes": [
-				{
-				  "key": "url.path",
-				  "value": ".*/tenants.*",
-				  "matchType": "regexp"
-				},
-				{
-				  "key": "name",
-				  "value": ".*OPTIONS.*",
-				  "matchType": "regexp"
-				}
-			  ],
-			  "percentage": 0 
-		  }
-		]
+			  "percentage": 0
+			}
+		  ]
 	  }
 }
