@@ -18,22 +18,15 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 0
-	},
-	"sampling": {
+		"percentage": 0,
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
 				"percentage": 100, 
 				"attributes": [
 				  {
-					"key": "url.path",
+					"key": "url",
 					"value": ".*/tenants.*",
-					"matchType": "regexp"
-				  },
-				  {
-					"key": "name",
-					"value": ".*GET.*",
 					"matchType": "regexp"
 				  }
 				]
