@@ -27,7 +27,7 @@
 				"percentage": 100, 
 				"attributes": [
 				  {
-					"key": "url",
+					"key": "url.path",
 					"value": ".*/tenants.*",
 					"matchType": "regexp"
 				  },
