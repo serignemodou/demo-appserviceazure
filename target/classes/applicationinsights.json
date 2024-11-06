@@ -25,9 +25,9 @@
 				"percentage": 100, 
 				"attributes": [
 				  {
-					"key": "url",
-					"value": ".*/tenants.*",
-					"matchType": "regexp"
+					"key": "url.path",
+					"value": "/app/v1/postetravail/gestionnaire/tenants/historique",
+					"matchType": "strict"
 				  }
 				]
 			},
