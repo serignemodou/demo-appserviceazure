@@ -13,14 +13,14 @@ import com.microsoft.applicationinsights.attach.ApplicationInsights;
 @RestController
 public class DemoApplication {
 
-	@RequestMapping("/app/v1/test")
+	@RequestMapping("/app/v1/postetravail/gestionnaire/tenants/historique")
 	public String appV1(){
-		return "app v1 version rc10";
+		return "tenant fouth path url";
 	}
 
-	@RequestMapping("/app/v2")
+	@RequestMapping("/tenants/whoami")
 	public String appV2(){
-		return "app v2 version rc10";
+		return "tenant just path after the domain";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();

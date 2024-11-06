@@ -1,5 +1,5 @@
 {
-	"connectionString": "InstrumentationKey=6dbe4fbc-4f68-4c43-98c6-bfb872063ec2;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=6706c161-1c38-4691-8c3c-5f8eb01989f9",
+	"connectionString": "InstrumentationKey=9beb30e9-61c6-4e83-8027-2e18c5e71b99;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=460bf71c-d534-4505-b5ab-d935d2f27458",
 	"role": {
 		"name": "cloud role demo name"
 	},
@@ -16,5 +16,58 @@
 			"maxSizeMb": 5,
 			"maxHistory": 1
 		}
-	} 
+	},  
+	"sampling": {
+		"percentage": 10,
+		"overrides": [
+		  {
+			"telemetryType": "request",
+			"attributes": [
+				{
+				  "key": "url.path",
+				  "value": ".*/tenants.*",
+				  "matchType": "regexp"
+				},
+				{
+				  "key": "name",
+				  "value": ".*POST.*",
+				  "matchType": "regexp"
+				}
+			  ],
+			  "percentage": 100 
+		  },
+		  {
+			"telemetryType": "request",
+			"attributes": [
+				{
+				  "key": "url.path",
+				  "value": ".*/tenants.*",
+				  "matchType": "regexp"
+				},
+				{
+				  "key": "name",
+				  "value": ".*GET.*",
+				  "matchType": "regexp"
+				}
+			  ],
+			  "percentage": 100 
+		  },
+		  {
+			"telemetryType": "request",
+			"attributes": [
+				{
+				  "key": "url.path",
+				  "value": ".*/tenants.*",
+				  "matchType": "regexp"
+				},
+				{
+				  "key": "name",
+				  "value": ".*OPTIONS.*",
+				  "matchType": "regexp"
+				}
+			  ],
+			  "percentage": 0 
+		  }
+		]
+	  }
 }
