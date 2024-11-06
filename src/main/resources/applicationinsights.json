@@ -24,7 +24,7 @@
 				"telemetryType": "request",
 				"attributes": [
 				  {
-					"key": "url.path",
+					"key": "url",
 					"value": ".*/tenants.*",
 					"matchType": "regexp"
 				  },

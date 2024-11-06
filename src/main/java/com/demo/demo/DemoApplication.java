@@ -15,7 +15,7 @@ public class DemoApplication {
 
 	@RequestMapping("/app/v1/postetravail/gestionnaire/tenants/historique")
 	public String appV1(){
-		return "tenant fouth path url, v+10";
+		return "tenant fouth path url, v+11";
 	}
 
 	@RequestMapping("/app/v1/health-check")
