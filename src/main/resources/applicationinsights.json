@@ -20,12 +20,8 @@
 	"sampling": {
 		"percentage": 10,
 		"overrides": {
-			"requests": {
-			  "percentage": 0
-			},
-			"traces": {
-				"percentage": 0
-			}
+			"telemetryType": "request",
+			"percentage": 0
 		}
 	}
 }
