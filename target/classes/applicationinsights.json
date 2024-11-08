@@ -22,22 +22,14 @@
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
-				"percentage": 0, 
+				"percentage": 100, 
 				"attributes": [
 				  {
 					"key": "url.path",
-					"value": "/app/v1/postetravail/gestionnaire/tenants/historique",
+					"value": "/app/v1/health-check",
 					"matchType": "strict"
 				  }
 				]
-			},
-			{
-				"telemetryType": "trace",
-				"percentage": 0
-			},
-			{
-				"telemetryType": "dependency",
-				"percentage": 0
 			}
 		]
 	}
