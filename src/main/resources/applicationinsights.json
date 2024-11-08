@@ -10,7 +10,7 @@
 	},
 	"selfDiagnostics": {
 		"destination":"file+console",
-		"level": "TRACE",
+		"level": "DEBUG",
 		"file": {
 			"path": "applicationinsights.log",
 			"maxSizeMb": 5,
