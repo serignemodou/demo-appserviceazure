@@ -26,8 +26,8 @@
 					"data": [
 					  {
 						"key": "url.path",
-						"value": "*./app/v1/health-check.*",
-						"matchType": "regexp"
+						"value": "/app/v1/health-check",
+						"matchType": "strict"
 					  }
 					],
 					"percentage": 0
