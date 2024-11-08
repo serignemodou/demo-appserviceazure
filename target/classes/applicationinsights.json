@@ -1,7 +1,7 @@
 {
-	"connectionString": "InstrumentationKey=9beb30e9-61c6-4e83-8027-2e18c5e71b99;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=460bf71c-d534-4505-b5ab-d935d2f27458",
+	"connectionString": "key-applicationinsights"
 	"role": {
-		"name": "cloud role demo name"
+		"name": "demo name"
 	},
 	"instrumentation": {
 		"logging": {
@@ -24,7 +24,7 @@
 				"telemetryType": "request",
 				"attributes": [
 				  {
-					"key": "url.path",
+					"key": "http.target",
 					"value": ".*/parcours/.*",
 					"matchType": "regexp"
 				  }
