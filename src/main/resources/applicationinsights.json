@@ -23,7 +23,7 @@
 			"percentage": 100,
 			"overrides": [
 				{
-					"attributes": "url.path",
+					"attributes": "http.target",
 					"value": "/health-check",
 					"percentage": 0
 				}
