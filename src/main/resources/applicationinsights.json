@@ -22,11 +22,11 @@
 			"percentage": 10,
 			"overrides":  [ 
 				{
-					"telemetryType": "trace",
+					"telemetryType": "request",
 					"attributes": [
 					  {
 						"key": "url.path",
-						"value": ".*/parcours/.*",
+						"value": "*./app/v1/health-check.*",
 						"matchType": "regexp"
 					  }
 					],
