@@ -18,7 +18,19 @@
 		}
 	},  
 	"preview": {
-		"sampling": {
+		"processors": [
+		  {
+			"type": "attribute",
+			  "attributes": [
+				{
+				  "key": "env",
+				  "value": "dev"
+				}
+			  ]
+		  }
+		]
+	  },
+	"sampling": {
 			"percentage": 10,
 			"overrides":  [ 
 				{
@@ -33,6 +45,5 @@
 					"percentage": 0
 				}
 			]
-		}
 	}
 }
