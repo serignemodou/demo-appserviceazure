@@ -18,17 +18,22 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 100,
+		"percentage": 0,
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
 				"percentage": 0, 
-				"attributes": [
-				  {
-					"key": "name",
-					"value": "GET /app/v1/health-check",
-					"matchType": "strict"
-				  }
+				"requests": [
+					{
+						"filter": {
+						"include": [
+							{
+							"url": ".*\\/health-chec.*" 
+							}
+						]
+						},
+						"samplingPercentage": 100  
+					}
 				]
 			}
 		]
