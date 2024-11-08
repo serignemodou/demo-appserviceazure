@@ -18,7 +18,6 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 10,
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
