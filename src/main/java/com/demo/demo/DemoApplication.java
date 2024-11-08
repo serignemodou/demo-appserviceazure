@@ -13,9 +13,9 @@ import com.microsoft.applicationinsights.attach.ApplicationInsights;
 @RestController
 public class DemoApplication {
 
-	@RequestMapping("/app/v1/postetravail/gestionnaire/tenants/historique")
+	@RequestMapping("/app/v1/parcours/utilisateurs")
 	public String appV1(){
-		return "tenant fouth path url, v+15";
+		return "tenant fouth path url, v+16";
 	}
 
 	@RequestMapping("/app/v1/health-check")
