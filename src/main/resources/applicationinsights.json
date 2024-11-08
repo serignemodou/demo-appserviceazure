@@ -16,29 +16,16 @@
 			"maxSizeMb": 5,
 			"maxHistory": 1
 		}
-	},  
-	"preview": {
-		"processors": [
-		  {
-			"type": "attribute",
-			  "attributes": [
-				{
-				  "key": "env",
-				  "value": "dev"
-				}
-			  ]
-		  }
-		]
-	  },
+	},
 	"sampling": {
 			"percentage": 10,
 			"overrides":  [ 
 				{
 					"telemetryType": "request",
-					"AttributesMap": [
+					"attributes": [
 					  {
-						"key": "url.path",
-						"value": "/app/v1/parcours/utilisateurs",
+						"key": "service.name",
+						"value": "appsvcsamplingtest",
 						"matchType": "strict"
 					  }
 					],
