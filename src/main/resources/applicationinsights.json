@@ -18,19 +18,16 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 0,
-		"overrides":  [ 
-			{
-				"telemetryType": "request",
-				"attributes": [
-				  {
-					"key": "http.target",
-					"value": ".*/parcours/.*",
-					"matchType": "regexp"
-				  }
-				],
-				"percentage": 100
-			}
-		]
+		"percentage": 100,
+		"requests": {
+			"percentage": 100,
+			"overrides": [
+				{
+					"attributes": "url.path",
+					"value": "/health-check",
+					"percentage": 0
+				}
+			]
+		}
 	}
 }
