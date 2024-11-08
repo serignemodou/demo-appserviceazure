@@ -23,10 +23,10 @@
 			"overrides":  [ 
 				{
 					"telemetryType": "request",
-					"data": [
+					"filteredAttributes": [
 					  {
 						"key": "url.path",
-						"value": "/app/v1/health-check",
+						"value": "/app/v1/parcours/utilisateurs",
 						"matchType": "strict"
 					  }
 					],
