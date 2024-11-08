@@ -23,7 +23,7 @@
 			"overrides":  [ 
 				{
 					"telemetryType": "request",
-					"filteredAttributes": [
+					"AttributesMap": [
 					  {
 						"key": "url.path",
 						"value": "/app/v1/parcours/utilisateurs",
