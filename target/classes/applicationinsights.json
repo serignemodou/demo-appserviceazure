@@ -23,7 +23,7 @@
 			"overrides":  [ 
 				{
 					"telemetryType": "request",
-					"attributes": [
+					"data": [
 					  {
 						"key": "url.path",
 						"value": "*./app/v1/health-check.*",
