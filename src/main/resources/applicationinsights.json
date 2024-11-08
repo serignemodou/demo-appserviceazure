@@ -17,20 +17,22 @@
 			"maxHistory": 1
 		}
 	},  
-	"sampling": {
-		"percentage": 0,
-		"overrides":  [ 
-			{
-				"telemetryType": "request",
-				"attributes": [
-				  {
-					"key": "url.path",
-					"value": ".*/parcours/.*",
-					"matchType": "regexp"
-				  }
-				],
-				"percentage": 100
-			}
-		]
+	"preview": {
+		"sampling": {
+			"percentage": 10,
+			"overrides":  [ 
+				{
+					"telemetryType": "trace",
+					"attributes": [
+					  {
+						"key": "url.path",
+						"value": ".*/parcours/.*",
+						"matchType": "regexp"
+					  }
+					],
+					"percentage": 0
+				}
+			]
+		}
 	}
 }
