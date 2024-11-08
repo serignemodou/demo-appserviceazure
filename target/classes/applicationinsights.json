@@ -18,11 +18,11 @@
 		}
 	},  
 	"sampling": {
-		"percentage": 0,
+		"percentage": 100,
 		"overrides":  [ 
 			{
 				"telemetryType": "request",
-				"percentage": 100, 
+				"percentage": 0, 
 				"attributes": [
 				  {
 					"key": "url.path",
