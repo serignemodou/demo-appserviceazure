@@ -17,20 +17,6 @@
 			"maxHistory": 1
 		}
 	},
-	"preview": {
-		"processors": [ 
-			{
-				"type": "attribute",
-				"actions": [
-					{
-					  "key": "attribute1",
-					  "value": "value1",
-					  "action": "insert"
-					}
-				  ]
-			}
-		]
-	},
 	"sampling": {
 		"percentage": 10,
 		"overrides":  [ 
@@ -38,9 +24,8 @@
 				"telemetryType": "request",
 				"attributes": [
 					{
-						"key": "data.url.path",
-						"value": ".*/parcours.*",
-						"matchType": "strict"
+						"key": "url.path",
+						"value": "/app/v1/health-check"
 					}
 				],
 				"percentage": 0
