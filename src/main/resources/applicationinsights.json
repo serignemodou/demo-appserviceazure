@@ -17,15 +17,23 @@
 			"maxHistory": 1
 		}
 	},
-	"processors": [
-		{
-			"type": "attribute",
-			"actions": [
-				{
-					"key": "url.path",
-					"action": "extract"
+	"sampling": {
+		"percentage": 100,
+		"overrides": 
+		[
+		  {
+			"telemetryType": "request",
+			"AttributesMap": [
+			  {
+				"data": {
+				  "key": "url.path",
+				  "value": ".*/parcours/.*",
+				  "matchType": "regexp"
 				}
-			]
-		}
-	]
+			  }
+			],
+			"percentage": 0
+		  }
+		]
+	}
 }
