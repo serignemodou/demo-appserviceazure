@@ -40,6 +40,7 @@ public class FilterOtel implements Filter {
                 chain.doFilter(request, response);
             }finally{
                 telemetry.setUrl(httpServletRequest.getRequestURI());
+                telemetry.getProperties().put("hello", "GETETTTT");
                 telemetryClient.trackRequest(telemetry);
                 headers.put("StatusCode", String.valueOf(httpServletResponse.getStatus()));
                 telemetryClient.trackTrace("http headers opentelemetry, Message: "+getCustomMessageOfStatusCode(httpServletResponse.getStatus()), SeverityLevel.Information, headers);
