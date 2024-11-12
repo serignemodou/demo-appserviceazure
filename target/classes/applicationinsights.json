@@ -21,11 +21,11 @@
 		{
 			"type": "attribute",
 			"actions": [
-			{
-				"key": "url.path",
-				"pattern": "*./parcours.*",
-				"action": "extract"
-			}
+				{
+					"key": "cluster",
+					"value": "sandbox",
+					"action": "insert"
+				}
 			]
 		}
 	]
