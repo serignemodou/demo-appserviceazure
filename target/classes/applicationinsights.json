@@ -17,6 +17,20 @@
 			"maxHistory": 1
 		}
 	},
+	"preview": {
+		"processors": [ 
+			{
+				"type": "attribute",
+				"actions": [
+					{
+					  "key": "attribute1",
+					  "value": "value1",
+					  "action": "insert"
+					}
+				  ]
+			}
+		]
+	},
 	"sampling": {
 		"percentage": 10,
 		"overrides":  [ 
