@@ -23,15 +23,15 @@
 		[
 		  {
 			"telemetryType": "request",
-			"AttributesMap": [
-			  {
-				"data": {
-				  "key": "url.path",
-				  "value": ".*/parcours/.*",
-				  "matchType": "regexp"
-				}
-			  }
-			],
+			"attributes": {
+				"data": [
+					{
+						"key": "url.path",
+						"value": ".*/parcours/.*",
+						"matchType": "regexp"
+					}
+				]
+			},
 			"percentage": 0
 		  }
 		]
