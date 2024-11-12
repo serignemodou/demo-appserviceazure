@@ -17,20 +17,16 @@
 			"maxHistory": 1
 		}
 	},
-	"sampling": {
-			"percentage": 10,
-			"overrides":  [ 
-				{
-					"telemetryType": "request",
-					"attributes": [
-					  {
-						"key": "service.name",
-						"value": "appsvcsamplingtest",
-						"matchType": "strict"
-					  }
-					],
-					"percentage": 0
-				}
+	"processors": [
+		{
+			"type": "attribute",
+			"actions": [
+			{
+				"key": "url.path",
+				"pattern": "*./parcours.*",
+				"action": "extract"
+			}
 			]
-	}
+		}
+	]
 }
