@@ -22,9 +22,8 @@
 			"type": "attribute",
 			"actions": [
 				{
-					"key": "cluster",
-					"value": "sandbox",
-					"action": "insert"
+					"key": "url.path",
+					"action": "extract"
 				}
 			]
 		}
