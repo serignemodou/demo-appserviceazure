@@ -15,12 +15,12 @@ public class DemoApplication {
 
 	@RequestMapping("/app/v1/parcours/utilisateurs")
 	public String appV1(){
-		return "tenant fouth path url, v+26";
+		return "tenant fouth path url, v+27";
 	}
 
 	@RequestMapping("/app/v1/health-check")
 	public String appV2(){
-		return "tenant just path after the domain v26";
+		return "tenant just path after the domain v27";
 	}
 	public static void main(String[] args) {
         ApplicationInsights.attach();

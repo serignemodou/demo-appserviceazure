@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import com.microsoft.applicationinsights.TelemetryClient;
+import com.microsoft.applicationinsights.telemetry.RequestTelemetry;
 import com.microsoft.applicationinsights.telemetry.SeverityLevel;
 
 import jakarta.servlet.Filter;
@@ -25,6 +26,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FilterOtel implements Filter {
 
     static final TelemetryClient telemetryClient = new TelemetryClient();
+    RequestTelemetry telemetry = new RequestTelemetry();
     
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
@@ -37,6 +39,8 @@ public class FilterOtel implements Filter {
                 headers = logHttpRequestHeaders(httpServletRequest);
                 chain.doFilter(request, response);
             }finally{
+                telemetry.setUrl(httpServletRequest.getRequestURI());
+                telemetryClient.trackRequest(telemetry);
                 headers.put("StatusCode", String.valueOf(httpServletResponse.getStatus()));
                 telemetryClient.trackTrace("http headers opentelemetry, Message: "+getCustomMessageOfStatusCode(httpServletResponse.getStatus()), SeverityLevel.Information, headers);
                 telemetryClient.flush();
