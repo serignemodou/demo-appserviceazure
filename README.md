@@ -19,3 +19,7 @@
 
 # Verify if the sampling override is apply
 1- Verify if only requests with path parcours are logged in the app insights requests logs table
+
+# More info
+To see the attributes in the app service logs, i added this env variable on azure app service
+APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL=DEBUG
