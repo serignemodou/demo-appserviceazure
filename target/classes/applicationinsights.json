@@ -1,5 +1,5 @@
 {
-	"connectionString": "InstrumentationKey=9beb30e9-61c6-4e83-8027-2e18c5e71b99;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=460bf71c-d534-4505-b5ab-d935d2f27458",
+	"connectionString": "App-insights-InstrumentationKey",
 	"role": {
 		"name": "demo name"
 	},
@@ -18,16 +18,19 @@
 		}
 	},
 	"sampling": {
-		"percentage": 100,
-		"request": {
-			"percentage": 100,
-			"overrides":  [ 
-				{
-					"attributes": "http.target",
-					"value": "/app/v1/health-check",
-					"percentage": 0
-				}
-			]
-		}
+		"percentage": 0,
+		"overrides":  [ 
+			{
+				"telemetryType": "request",
+				"attributes": [
+				  {
+					"key": "url.path",
+					"value": ".*/parcours/.*",
+					"matchType": "regexp"
+				  }
+				],
+				"percentage": 100
+			}
+		]
 	}
 }
