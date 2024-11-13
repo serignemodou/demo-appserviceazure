@@ -18,7 +18,7 @@ public class DemoApplication {
 		return "demo app insights parcours users";
 	}
 
-	@RequestMapping("/app/v1/health-check")
+	@RequestMapping("/app/v1/health-check/test")
 	public String appV2(){
 		return "app insights health check";
 	}

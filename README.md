@@ -15,7 +15,7 @@
 # Access to the application
 1- Use the path endpoint in the DemoApplication.java file example
 1-1: <app-serivice-custom-domain>/app/v1/parcours/utilisateurs
-1-2: <app-serivice-custom-domain>/app/v1/health-check
+1-2: <app-serivice-custom-domain>/app/v1/health-check/test
 
 # Verify if the sampling override is apply
-1- Verify if the requests with path parcours is logged in the app insights requests logs table
+1- Verify if only requests with path parcours are logged in the app insights requests logs table
