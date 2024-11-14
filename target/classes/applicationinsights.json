@@ -1,5 +1,5 @@
 {
-	"connectionString": "App-insights-InstrumentationKey",
+	"connectionString": "InstrumentationKey=9beb30e9-61c6-4e83-8027-2e18c5e71b99;IngestionEndpoint=https://eastus-8.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=460bf71c-d534-4505-b5ab-d935d2f27458",
 	"role": {
 		"name": "demo name"
 	},
@@ -25,7 +25,7 @@
 				"attributes": [
 				  {
 					"key": "url.path",
-					"value": ".*/parcours/.*",
+					"value": ".*/health-check/.*",
 					"matchType": "regexp"
 				  }
 				],
